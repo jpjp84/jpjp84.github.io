@@ -1,3 +1,9 @@
+const path = require('path');
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -5,7 +11,7 @@ module.exports = {
     author: `@gatsbyjs`
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+      `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -42,12 +48,28 @@ module.exports = {
       options: {
         postCssPlugins: [
           require(`postcss-preset-env`)({ stage: 2 }),
-          require(`autoprefixer`)({ browsers: ["> 1%", "last 3 versions", "Firefox >= 20", "iOS >=7"] })
+          require(`autoprefixer`)
         ],
         includePaths: ["./node_modules"],
         implementation: require("sass"),
         webpackImporter: false
       }
-    }
+    },
+    {
+      resolve: 'gatsby-source-notionso',
+      options: {
+        name: 'Blog',
+        tokenv2: process.env.NOTION_TOKEN,
+        rootPageUrl: "https://www.notion.so/Export-Blog-0b55f2523260415596a5d4b916e804d9",
+        debug: false,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
+      },
+    },
   ]
 }
