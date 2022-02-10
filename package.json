@@ -21,7 +21,7 @@
     "gatsby-source-notionso": "^1.1.6",
     "gatsby-transformer-sharp": "^2.5.2",
     "highlight.js": "^9.17.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "postcss-preset-env": "^6.7.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
